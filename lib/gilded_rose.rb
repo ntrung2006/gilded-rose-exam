@@ -27,6 +27,8 @@ class GildedRose
           item.quality += 1
         elsif item.name == 'Backstage passes to a TAFKAL80ETC concert'
           item.quality = 0
+        elsif item.name == 'Conjured'
+          item.quality -= 2
         else
           item.quality -= 1
         end
