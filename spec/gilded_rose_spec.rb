@@ -148,10 +148,17 @@ describe GildedRose do
     context "when item name is 'Conjured'" do
       let(:name) { 'Conjured' }
       let(:initial_quality) { 10 }
-      let(:initial_sell_in) { -1 }
 
       it "degrade in quality twice as fast as normal items" do
-        expect(item.quality).to eq 7
+        expect(item.quality).to eq 8
+      end
+
+      context "when sell by date has passed" do
+        let(:initial_sell_in) { -1 }
+
+        it "quality degrades twice as fast" do
+          expect(item.quality).to eq 6
+        end
       end
     end
 

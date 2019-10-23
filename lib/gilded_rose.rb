@@ -1,7 +1,10 @@
 class GildedRose
   def initialize(items)
     @items = items
-    @names = ['Aged Brie', 'Backstage passes to a TAFKAL80ETC concert', 'Sulfuras, Hand of Ragnaros', 'Conjured']
+    @names = [
+      'Aged Brie', 'Backstage passes to a TAFKAL80ETC concert',
+      'Sulfuras, Hand of Ragnaros', 'Conjured'
+    ]
 
     @normal_unit = 1
     @max_quality = 50
@@ -36,6 +39,8 @@ class GildedRose
         item.quality += @normal_unit if item.sell_in <= @sell_in_10
         item.quality += @normal_unit if item.sell_in <= @sell_in_5
       end
+    elsif item.name == @names[3]
+      item.quality -= @normal_unit * 2
     else
       item.quality -= @normal_unit
     end
