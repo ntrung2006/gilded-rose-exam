@@ -42,17 +42,17 @@ class GildedRose
   end
 
   def update_quality_negative_sell_in(item)
-    if item.sell_in.negative? # is mean item.sell_in < 0
-      if item.name == @names[0]
-        item.quality += @normal_unit
-      elsif item.name == @names[1]
-        item.quality = @min_quality
-      elsif item.name == @names[3]
-        # Conjured items degrade in quality twice as fast as normal items
-        item.quality -= @normal_unit * 2
-      else
-        item.quality -= @normal_unit
-      end
+    return unless item.sell_in.negative? # is mean item.sell_in < 0
+
+    if item.name == @names[0]
+      item.quality += @normal_unit
+    elsif item.name == @names[1]
+      item.quality = @min_quality
+    elsif item.name == @names[3]
+      # Conjured items degrade in quality twice as fast as normal items
+      item.quality -= @normal_unit * 2
+    else
+      item.quality -= @normal_unit
     end
   end
 end
